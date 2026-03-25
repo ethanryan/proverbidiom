@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- EDIT: Page title and meta description -->
-    <title>Proverbidiom Labs — Web Design & Development</title>
-    <meta name="description" content="Proverbidiom Labs builds polished, professional websites for small businesses, artists, writers, and local service providers.">
+    <title>Proverbidiom Labs — Web Development</title>
+    <meta name="description" content="Proverbidiom Labs builds polished, professional websites for small businesses, artists, writers, and service providers.">
 
     <!-- Google Fonts: Cormorant Garamond (display) + Jost (body) -->
     <!-- EDIT: To change fonts, update the URL here and the --font-display / --font-body variables in styles.css -->
@@ -66,11 +66,13 @@
              EDIT: .hero-headline, .hero-subhead, CTA button text and links
              ============================================================ -->
         <section id="hero" class="hero">
+            <!-- Canvas animation — controlled by script.js -->
+            <canvas id="hero-canvas" aria-hidden="true"></canvas>
             <div class="container">
                 <div class="hero-content">
 
                     <!-- EDIT: Small label above headline -->
-                    <p class="hero-label">Web Design & Development</p>
+                    <p class="hero-label">Web Development</p>
 
                     <!-- EDIT: Main headline — the <em> tag renders in italic accent color -->
                     <h1 class="hero-headline">
@@ -81,7 +83,7 @@
                     <!-- EDIT: Subheading -->
                     <p class="hero-subhead">
                         Proverbidiom Labs builds polished, professional websites for small businesses,
-                        artists, writers, and local service providers — without the agency overhead.
+                        artists, writers, and service providers — without the agency overhead.
                     </p>
 
                     <div class="hero-actions">
@@ -115,28 +117,58 @@
                         <h3 class="work-group-label">Live</h3>
                         <ul class="work-list">
 
-                            <!-- EDIT: Replace href and name for each live project -->
+                            <!-- EDIT: Update href, work-name, work-desc, and work-tags for each project -->
                             <li class="work-item">
                                 <a href="https://bestbest.reviews" target="_blank" rel="noopener noreferrer" class="work-link">
-                                    <span class="work-name">bestbest.reviews</span>
+                                    <div class="work-info">
+                                        <span class="work-name">bestbest.reviews</span>
+                                        <!-- EDIT: Short description -->
+                                        <p class="work-desc">An AI-generated consumer review platform for finding top-rated products and services.</p>
+                                        <div class="work-tags">
+                                            <!-- EDIT: Tech stack and hosting — add, remove, or rename tags freely -->
+                                            <span class="work-tag">Next.js / React / MongoDB / OpenAI API</span>
+                                            <span class="work-tag">Vercel</span>
+                                        </div>
+                                    </div>
                                     <span class="work-arrow" aria-hidden="true">→</span>
                                 </a>
                             </li>
                             <li class="work-item">
-                                <a href="https://fakeporn.net" target="_blank" rel="noopener noreferrer" class="work-link">
-                                    <span class="work-name">fakeporn.net</span>
+                                <a href="https://fakeporn.net/" target="_blank" rel="noopener noreferrer" class="work-link">
+                                    <div class="work-info">
+                                        <span class="work-name">fakeporn.net</span>
+                                        <p class="work-desc">A satirical creative project — the name is the whole joke, and the site delivers.</p>
+                                        <div class="work-tags">
+                                            <span class="work-tag">HTML / CSS / JS</span>
+                                            <span class="work-tag">Netlify</span>
+                                        </div>
+                                    </div>
                                     <span class="work-arrow" aria-hidden="true">→</span>
                                 </a>
                             </li>
                             <li class="work-item">
                                 <a href="https://wordnerds.co" target="_blank" rel="noopener noreferrer" class="work-link">
-                                    <span class="work-name">wordnerds.co</span>
+                                    <div class="work-info">
+                                        <span class="work-name">wordnerds.co</span>
+                                        <p class="work-desc">A community hub for writers, editors, and anyone who cares too much about language.</p>
+                                        <div class="work-tags">
+                                            <span class="work-tag">Next.js / React / MongoDB / OpenAI API</span>
+                                            <span class="work-tag">Vercel</span>
+                                        </div>
+                                    </div>
                                     <span class="work-arrow" aria-hidden="true">→</span>
                                 </a>
                             </li>
                             <li class="work-item">
                                 <a href="https://howtowriteabook.co" target="_blank" rel="noopener noreferrer" class="work-link">
-                                    <span class="work-name">howtowriteabook.co</span>
+                                    <div class="work-info">
+                                        <span class="work-name">howtowriteabook.co</span>
+                                        <p class="work-desc">A practical resource walking first-time and returning authors through the writing process.</p>
+                                        <div class="work-tags">
+                                            <span class="work-tag">HTML / CSS / JS</span>
+                                            <span class="work-tag">GitHub Pages</span>
+                                        </div>
+                                    </div>
                                     <span class="work-arrow" aria-hidden="true">→</span>
                                 </a>
                             </li>
@@ -242,7 +274,7 @@
                             building websites that are clean, professional, and easy to maintain.
                         </p>
                         <p class="about-text">
-                            We work with small businesses, local service providers, artists, and writers
+                            We work with small businesses, service providers, artists, and writers
                             who need a strong online presence without the complexity — or the cost —
                             of a large agency. Every project gets the same careful attention, whether
                             it's a full site build or a single landing page.
