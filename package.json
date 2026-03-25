@@ -1,0 +1,26 @@
+{
+  "name": "proverbidiom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "start": "vite"                           
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ethanryan/proverbidiom.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ethanryan/proverbidiom/issues"
+  },
+  "homepage": "https://github.com/ethanryan/proverbidiom#readme",
+  "devDependencies": {
+    "vite": "^8.0.2"
+  }
+}
