@@ -20,7 +20,7 @@
     --color-bg:           #F8F7FA;   /* faint lavender-white — main background */
     --color-bg-alt:       #F0EDF6;   /* slightly deeper — alternate sections */
     --color-text:         #1A1820;   /* near-black with a touch of purple */
-    --color-text-muted:   #6B6578;   /* purple-tinted muted text */
+    --color-text-muted:   #4E4A5A;   /* purple-tinted muted text — darkened for WCAG AA contrast */
     --color-accent:       #5B3E9A;   /* deep purple — primary accent */
     --color-accent-hover: #4A3282;   /* darker purple for hover states */
     --color-gold:         #C49A42;   /* warm gold — service numbers, CTAs */
@@ -77,7 +77,7 @@
 }
 
 html {
-    font-size: 16px;
+    font-size: 19px; /* EDIT: Base font size — scales all rem units */
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
 }
@@ -88,9 +88,49 @@ body {
     font-family: var(--font-body);
     font-weight: 400;
     font-size: 1rem;
-    line-height: 1.65;
+    line-height: 1.75; /* increased for readability */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Skip navigation link (ADA) ────────────────────────────
+   Hidden off-screen until focused by keyboard — required for
+   screen readers and keyboard-only users.
+   ------------------------------------------------------------ */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: var(--space-4);
+    z-index: 10000;
+    padding: var(--space-3) var(--space-6);
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    text-decoration: none;
+    transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 2px solid var(--color-white);
+    outline-offset: -4px;
+}
+
+/* ── Focus-visible ring ─────────────────────────────────────
+   Visible keyboard focus indicator for all interactive elements.
+   Uses :focus-visible so mouse users don't see the ring.
+   ------------------------------------------------------------ */
+:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: var(--border-radius);
+}
+
+/* Remove default outline since we're providing our own */
+:focus:not(:focus-visible) {
+    outline: none;
 }
 
 /* ── Grain texture overlay ──────────────────────────────────
@@ -171,9 +211,9 @@ textarea {
 }
 
 .section-subtitle {
-    font-size: 1.0625rem;
+    font-size: 1.125rem;
     color: var(--color-text-muted);
-    line-height: 1.6;
+    line-height: 1.65;
     max-width: 480px;
     font-weight: 300;
 }
@@ -286,6 +326,11 @@ textarea {
     letter-spacing: 0.02em;
     color: var(--color-text-muted);
     transition: color var(--transition);
+    /* 44px min touch target (WCAG 2.5.5) */
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 var(--space-1);
 }
 
 .nav-desktop a:hover {
@@ -396,24 +441,40 @@ textarea {
     align-items: center;
 }
 
-/* GIF background — activated when you add your gif.
-   Uncomment the <div class="hero-gif-bg"> in index.html
-   and tell me the filename — I'll complete this. */
-.hero-gif-bg {
+/* Video background — fills hero, sits behind text */
+.hero-video-bg {
     position: absolute;
     inset: 0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.18;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    /* EDIT: opacity controls how vivid the video is (0 = invisible, 1 = full) */
+    opacity: 0.9;
     pointer-events: none;
     z-index: 0;
 }
 
-/* Keep hero text above gif background */
+/* Gradient scrim between video and text — ensures readable contrast (ADA)
+   Fades from light on the left (where text lives) to transparent on the right */
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(248, 247, 250, 0.75) 0%,
+        rgba(248, 247, 250, 0.45) 50%,
+        rgba(248, 247, 250, 0.10) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Keep hero text above video AND scrim */
 .hero .container {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .hero-content {
@@ -439,11 +500,13 @@ textarea {
     color: var(--color-text);
 }
 
-/* EDIT: The italic accent portion of the headline */
+/* EDIT: The italic accent portion of the headline
+   Dark text with a soft gold glow — warm but not over the top */
 .hero-headline em {
     font-style: italic;
-    color: var(--color-accent);
+    color: var(--color-text);
     font-weight: 300;
+    text-shadow: 0 2px 22px rgba(196, 154, 66, 0.55);
 }
 
 .hero-subhead {
@@ -460,6 +523,20 @@ textarea {
     align-items: center;
     gap: var(--space-4);
     flex-wrap: wrap;
+}
+
+/* Ghost button override inside hero — solid white over video background */
+.hero .btn-ghost {
+    background-color: rgba(255, 255, 255, 0.88);
+    color: var(--color-text);
+    border-color: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.hero .btn-ghost:hover {
+    background-color: #ffffff;
+    border-color: #ffffff;
 }
 
 
@@ -532,9 +609,9 @@ textarea {
 
 /* EDIT: Short project description */
 .work-desc {
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     color: var(--color-text-muted);
-    line-height: 1.55;
+    line-height: 1.65;
     font-weight: 300;
     margin-bottom: var(--space-3);
     transition: color var(--transition);
@@ -643,9 +720,9 @@ textarea {
 }
 
 .service-desc {
-    font-size: 0.9375rem;
+    font-size: 1rem;
     color: var(--color-text-muted);
-    line-height: 1.75;
+    line-height: 1.8;
     font-weight: 300;
 }
 
@@ -673,9 +750,9 @@ textarea {
 }
 
 .about-text {
-    font-size: 1.0625rem;
+    font-size: 1.125rem;
     color: var(--color-text-muted);
-    line-height: 1.85;
+    line-height: 1.9;
     font-weight: 300;
     margin-bottom: var(--space-6);
 }

@@ -18,6 +18,9 @@
 </head>
 <body>
 
+    <!-- Skip navigation — hidden visually, shown on keyboard focus (ADA) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- ============================================================
          HEADER / NAVIGATION
          EDIT: Business name (.logo), nav link text, CTA button text
@@ -59,7 +62,7 @@
         </nav>
     </div>
 
-    <main>
+    <main id="main-content">
 
         <!-- ============================================================
              HERO
@@ -69,7 +72,16 @@
              uncomment the <div> and tell me — I'll wire up the CSS.
              ============================================================ -->
         <section id="hero" class="hero">
-            <!-- <div class="hero-gif-bg" aria-hidden="true"></div> -->
+            <!-- Video background — muted/looping/autoplay required for gif-like behavior -->
+            <video
+                class="hero-video-bg"
+                src="media/abstract-purple-landscape-gif.mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+                aria-hidden="true"
+            ></video>
             <div class="container">
                 <div class="hero-content">
 

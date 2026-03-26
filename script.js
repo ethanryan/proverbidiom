@@ -119,15 +119,16 @@ if ('IntersectionObserver' in window && fadeEls.length > 0) {
 
 
 /* ------------------------------------------------------------
-   6. HERO GIF BACKGROUND — placeholder, ready to activate
-   When you have your gif:
-     1. Drop the file into this project folder
-     2. Uncomment <div class="hero-gif-bg"> in index.html
-     3. Replace 'your-animation.gif' below with your filename
-     4. Adjust the opacity value in styles.css (.hero-gif-bg)
+   6. HERO VIDEO BACKGROUND
+   Respects prefers-reduced-motion — pauses the video if the
+   user has that accessibility setting enabled.
+   EDIT: Adjust opacity in styles.css (.hero-video-bg)
    ------------------------------------------------------------ */
-// const gifBg = document.querySelector('.hero-gif-bg');
-// if (gifBg) gifBg.style.backgroundImage = "url('your-animation.gif')";
+const heroVideo = document.querySelector('.hero-video-bg');
+if (heroVideo && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    heroVideo.pause();
+    heroVideo.style.display = 'none';
+}
 
 
 /* ------------------------------------------------------------
