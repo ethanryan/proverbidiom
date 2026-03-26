@@ -213,38 +213,13 @@ if (form) {
         submitBtn.textContent = 'Sending\u2026';
 
         try {
-            /* --------------------------------------------------
-               BACKEND INTEGRATION POINT
+            const res = await fetch('https://formspree.io/f/xaqlyblo', {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                body: new FormData(form)
+            });
 
-               This block currently simulates a submission.
-               Replace it with one of the options below:
-
-               ── Option A: Formspree ──────────────────────────
-               Add action="https://formspree.io/f/YOUR_FORM_ID"
-               and method="POST" to the <form> in index.html.
-               Formspree will handle submission natively.
-               You can remove this entire try/catch block.
-
-               ── Option B: Netlify Forms ──────────────────────
-               Add the netlify attribute to your <form> tag
-               in index.html. Netlify handles it on deploy.
-               You can remove this try/catch block.
-
-               ── Option C: Custom API endpoint ────────────────
-               Replace the simulated delay below with a real
-               fetch call to your backend:
-
-               const res = await fetch('https://your-api.com/contact', {
-                   method: 'POST',
-                   headers: { 'Content-Type': 'application/json' },
-                   body: JSON.stringify({ name, email, project })
-               });
-               if (!res.ok) throw new Error('Network error');
-               -------------------------------------------------- */
-
-            // PLACEHOLDER — remove this when connecting a real backend
-            console.log('Form data (not yet submitted):', { name, email, project });
-            await new Promise(resolve => setTimeout(resolve, 900)); // simulated delay
+            if (!res.ok) throw new Error('Formspree error');
 
             // Show success, reset form
             successMsg.classList.add('visible');
