@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- EDIT: Page title and meta description -->
+    <title>Proverbidiom Labs — Web Development</title>
+    <meta name="description" content="Proverbidiom Labs builds polished, professional websites for small businesses, artists, writers, and service providers.">
+
+    <!-- Google Fonts: Cormorant Garamond (display) + Jost (body) -->
+    <!-- EDIT: To change fonts, update the URL here and the --font-display / --font-body variables in styles.css -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Emoji favicon — EDIT: swap the emoji to change the icon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🙂</text></svg>">
+</head>
+<body>
+
+    <!-- Skip navigation — hidden visually, shown on keyboard focus (ADA) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ============================================================
+         HEADER / NAVIGATION
+         EDIT: Business name (.logo), nav link text, CTA button text
+         ============================================================ -->
+    <header class="site-header" id="site-header">
+        <div class="container header-inner">
+
+            <!-- EDIT: Business name -->
+            <a href="#hero" class="logo">Proverbidiom Labs</a>
+
+            <nav class="nav-desktop" aria-label="Main navigation">
+                <a href="#work">Work</a>
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <!-- EDIT: CTA button text -->
+            <a href="#contact" class="btn btn-primary nav-cta">Start a Project</a>
+
+            <!-- Mobile hamburger — toggled by script.js -->
+            <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+    </header>
+
+    <!-- Mobile nav overlay -->
+    <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+        <nav aria-label="Mobile navigation">
+            <a href="#work"     class="mobile-nav-link">Work</a>
+            <a href="#services" class="mobile-nav-link">Services</a>
+            <a href="#about"    class="mobile-nav-link">About</a>
+            <a href="#contact"  class="mobile-nav-link">Contact</a>
+            <a href="#contact"  class="btn btn-primary mobile-nav-cta">Start a Project</a>
+        </nav>
+    </div>
+
+    <main id="main-content">
+
+        <!-- ============================================================
+             HERO
+             EDIT: headline text, CTA button text/links
+             GIF BACKGROUND: When you have your gif, drop it in the
+             project folder and replace hero-bg.gif below, then
+             uncomment the <div> and tell me — I'll wire up the CSS.
+             ============================================================ -->
+        <section id="hero" class="hero">
+            <!-- Video background — muted/looping/autoplay required for gif-like behavior -->
+            <video
+                class="hero-video-bg"
+                src="media/abstract-purple-landscape-gif.mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+                aria-hidden="true"
+            ></video>
+            <div class="container">
+                <div class="hero-content">
+
+                    <!-- EDIT: Main headline -->
+                    <h1 class="hero-headline">
+                        Clean code<br>
+                        <em>for creative people.</em>
+                    </h1>
+
+                    <div class="hero-actions">
+                        <!-- EDIT: CTA buttons -->
+                        <a href="#contact" class="btn btn-primary">Start a Project</a>
+                        <a href="#work"    class="btn btn-ghost">See Our Work</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             WORK / PORTFOLIO
+             EDIT: Add, remove, or replace <li> items below.
+             For each live project: update the href, and the text inside .work-name
+             For coming-soon items: update .work-name text (no link needed)
+             ============================================================ -->
+        <section id="work" class="section work-section">
+            <div class="container">
+
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Work</h2>
+                    <p class="section-subtitle">A selection of recent projects.</p>
+                </div>
+
+                <div class="work-grid">
+
+                    <!-- Live projects -->
+                    <div class="work-group fade-in">
+                        <h3 class="work-group-label">Live</h3>
+                        <ul class="work-list">
+
+                            <!-- EDIT: Update href, work-name, work-desc, and work-tags for each project -->
+                            <li class="work-item">
+                                <a href="https://bestbest.reviews" target="_blank" rel="noopener noreferrer" class="work-link">
+                                    <div class="work-info">
+                                        <span class="work-name">bestbest.reviews</span>
+                                        <!-- EDIT: Short description -->
+                                        <p class="work-desc">An AI-generated consumer review platform for finding top-rated products and services.</p>
+                                        <div class="work-tags">
+                                            <!-- EDIT: Tech stack and hosting — add, remove, or rename tags freely -->
+                                            <span class="work-tag">Next.js / React / MongoDB / OpenAI API</span>
+                                            <span class="work-tag">Vercel</span>
+                                        </div>
+                                    </div>
+                                    <span class="work-arrow" aria-hidden="true">→</span>
+                                </a>
+                            </li>
+                            <li class="work-item">
+                                <a href="https://fakeporn.net/" target="_blank" rel="noopener noreferrer" class="work-link">
+                                    <div class="work-info">
+                                        <span class="work-name">fakeporn.net</span>
+                                        <p class="work-desc">A satirical creative project — the name is the whole joke, and the site delivers.</p>
+                                        <div class="work-tags">
+                                            <span class="work-tag">HTML / CSS / JS</span>
+                                            <span class="work-tag">Netlify</span>
+                                        </div>
+                                    </div>
+                                    <span class="work-arrow" aria-hidden="true">→</span>
+                                </a>
+                            </li>
+                            <li class="work-item">
+                                <a href="https://wordnerds.co" target="_blank" rel="noopener noreferrer" class="work-link">
+                                    <div class="work-info">
+                                        <span class="work-name">wordnerds.co</span>
+                                        <p class="work-desc">A community hub for writers, editors, and anyone who cares too much about language.</p>
+                                        <div class="work-tags">
+                                            <span class="work-tag">Next.js / React / MongoDB / OpenAI API</span>
+                                            <span class="work-tag">Vercel</span>
+                                        </div>
+                                    </div>
+                                    <span class="work-arrow" aria-hidden="true">→</span>
+                                </a>
+                            </li>
+                            <li class="work-item">
+                                <a href="https://howtowriteabook.co" target="_blank" rel="noopener noreferrer" class="work-link">
+                                    <div class="work-info">
+                                        <span class="work-name">howtowriteabook.co</span>
+                                        <p class="work-desc">A practical resource walking first-time and returning authors through the writing process.</p>
+                                        <div class="work-tags">
+                                            <span class="work-tag">HTML / CSS / JS</span>
+                                            <span class="work-tag">GitHub Pages</span>
+                                        </div>
+                                    </div>
+                                    <span class="work-arrow" aria-hidden="true">→</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <!-- Coming soon projects -->
+                    <div class="work-group fade-in">
+                        <h3 class="work-group-label">Coming Soon</h3>
+                        <ul class="work-list">
+
+                            <!-- EDIT: Replace names for upcoming projects -->
+                            <li class="work-item coming-soon">
+                                <span class="work-name">badbots.co</span>
+                                <span class="work-badge">Soon</span>
+                            </li>
+                            <li class="work-item coming-soon">
+                                <span class="work-name">holywars.co</span>
+                                <span class="work-badge">Soon</span>
+                            </li>
+                            <li class="work-item coming-soon">
+                                <span class="work-name">illiteratebooks.com</span>
+                                <span class="work-badge">Soon</span>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             SERVICES
+             EDIT: .service-title and .service-desc for each of the three cards
+             To add a service: copy one .service-card block and update the number
+             ============================================================ -->
+        <section id="services" class="section services-section">
+            <div class="container">
+
+                <div class="section-header fade-in">
+                    <h2 class="section-title">Services</h2>
+                    <p class="section-subtitle">What we build and how we help.</p>
+                </div>
+
+                <div class="services-grid">
+
+                    <!-- EDIT: Service 1 -->
+                    <div class="service-card fade-in">
+                        <div class="service-number">01</div>
+                        <h3 class="service-title">Full Site Builds</h3>
+                        <p class="service-desc">
+                            A complete website designed and built for your business — from the homepage
+                            to the contact page. We handle the design, development, and launch so you
+                            can focus on what you do best.
+                        </p>
+                    </div>
+
+                    <!-- EDIT: Service 2 -->
+                    <div class="service-card fade-in">
+                        <div class="service-number">02</div>
+                        <h3 class="service-title">Landing Pages</h3>
+                        <p class="service-desc">
+                            A focused, high-converting single page for a product, service, or campaign.
+                            Fast to launch, easy to update, and built to make a strong first impression
+                            with the people you want to reach.
+                        </p>
+                    </div>
+
+                    <!-- EDIT: Service 3 -->
+                    <div class="service-card fade-in">
+                        <div class="service-number">03</div>
+                        <h3 class="service-title">Maintenance</h3>
+                        <p class="service-desc">
+                            Websites need upkeep. We offer ongoing support for updates, fixes, content
+                            changes, and general maintenance — so your site stays current, secure,
+                            and working properly over time.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             ABOUT
+             EDIT: .about-text paragraphs and .about-quote
+             ============================================================ -->
+        <section id="about" class="section about-section">
+            <div class="container">
+                <div class="about-inner">
+
+                    <div class="about-left fade-in">
+                        <h2 class="section-title">About</h2>
+                    </div>
+
+                    <div class="about-right fade-in">
+
+                        <!-- EDIT: About paragraphs -->
+                        <p class="about-text">
+                            Proverbidiom Labs is a small, independent web studio focused on one thing:
+                            building websites that are clean, professional, and easy to maintain.
+                        </p>
+                        <p class="about-text">
+                            We work with small businesses, service providers, artists, and writers
+                            who need a strong online presence without the complexity — or the cost —
+                            of a large agency. Every project gets the same careful attention, whether
+                            it's a full site build or a single landing page.
+                        </p>
+                        <p class="about-text">
+                            Good websites don't have to be complicated. They just have to work.
+                        </p>
+
+                        <!-- EDIT: Pull quote -->
+                        <blockquote class="about-quote">
+                            "A good website opens doors."
+                        </blockquote>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             CONTACT FORM
+
+             BACKEND INTEGRATION — choose one option:
+
+             Option A — Formspree (recommended for simple static sites):
+               1. Sign up at formspree.io and create a form
+               2. Add action attribute to <form> below:
+                  <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" ...>
+               3. You can remove the JS submit handler in script.js (or keep for UX feedback)
+
+             Option B — Netlify Forms (if hosting on Netlify):
+               1. Add netlify attribute to <form>:
+                  <form name="contact" netlify ...>
+               2. Add inside the form:
+                  <input type="hidden" name="form-name" value="contact">
+               3. Netlify handles everything automatically on deploy
+
+             Option C — Custom backend:
+               Replace the fetch() placeholder in script.js with your API endpoint
+
+             EDIT: Section heading, subtitle, placeholder text, field labels
+             ============================================================ -->
+        <section id="contact" class="section contact-section">
+            <div class="container">
+
+                <div class="section-header fade-in">
+                    <!-- EDIT: Contact section heading -->
+                    <h2 class="section-title">Start a Project</h2>
+                    <p class="section-subtitle">
+                        Tell us about what you need. We'll follow up within one business day.
+                    </p>
+                </div>
+
+                <form class="contact-form fade-in" id="contact-form" action="https://formspree.io/f/xaqlyblo" method="POST" novalidate>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name <span class="required" aria-label="required">*</span></label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Your name"
+                                autocomplete="name"
+                                required
+                            >
+                            <span class="field-error" id="name-error" role="alert"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email <span class="required" aria-label="required">*</span></label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="your@email.com"
+                                autocomplete="email"
+                                required
+                            >
+                            <span class="field-error" id="email-error" role="alert"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="project">Project Details <span class="required" aria-label="required">*</span></label>
+                        <textarea
+                            id="project"
+                            name="project"
+                            placeholder="Tell us about your project — what you need, what you do, and any timing or budget considerations."
+                            rows="6"
+                            required
+                        ></textarea>
+                        <span class="field-error" id="project-error" role="alert"></span>
+                    </div>
+
+                    <div class="form-footer">
+                        <!-- EDIT: Submit button text -->
+                        <button type="submit" class="btn btn-primary btn-submit" id="submit-btn">
+                            Send Message
+                        </button>
+                        <p class="form-note">Fields marked <span class="required">*</span> are required.</p>
+                    </div>
+
+                    <!-- Status messages (shown/hidden by script.js) -->
+                    <div class="form-message success" id="form-success" aria-live="polite">
+                        Message sent. We'll be in touch soon.
+                    </div>
+                    <div class="form-message error" id="form-error" aria-live="polite">
+                        Something went wrong. You can also reach us at
+                        <a href="mailto:proverbidiom@gmail.com">proverbidiom@gmail.com</a>
+                    </div>
+
+                </form>
+
+                <!-- EDIT: Fallback email address -->
+                <p class="contact-fallback">
+                    Prefer email?
+                    <a href="mailto:proverbidiom@gmail.com">proverbidiom@gmail.com</a>
+                </p>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================================
+         FOOTER
+         EDIT: .footer-logo text, .footer-domain text, copyright year is auto-set by script.js
+         ============================================================ -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+
+            <div class="footer-left">
+                <!-- EDIT: Business name, domain, email -->
+                <span class="footer-logo">Proverbidiom Labs</span>
+                <a href="mailto:proverbidiom@gmail.com" class="footer-email">proverbidiom@gmail.com</a>
+            </div>
+
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="#work">Work</a>
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <!-- Year is set automatically by script.js -->
+            <p class="footer-copy">&copy; <span id="footer-year"></span> Proverbidiom Labs</p>
+
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
