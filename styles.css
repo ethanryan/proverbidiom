@@ -462,16 +462,16 @@ textarea {
 }
 
 /* Gradient scrim between video and text — ensures readable contrast (ADA)
-   Fades from light on the left (where text lives) to transparent on the right */
+   Dark on the left (where text lives), fades to transparent on the right */
 .hero::after {
     content: '';
     position: absolute;
     inset: 0;
     background: linear-gradient(
         to right,
-        rgba(248, 247, 250, 0.75) 0%,
-        rgba(248, 247, 250, 0.45) 50%,
-        rgba(248, 247, 250, 0.10) 100%
+        rgba(18, 15, 26, 0.72) 0%,
+        rgba(18, 15, 26, 0.38) 50%,
+        rgba(18, 15, 26, 0.00) 100%
     );
     pointer-events: none;
     z-index: 1;
@@ -503,15 +503,11 @@ textarea {
     line-height: 1.08;
     letter-spacing: -0.025em;
     margin-bottom: var(--space-8);
-    color: var(--color-text);
+    color: var(--color-white);
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
 }
 
-/* EDIT: The italic accent portion of the headline
-   Dark text with a soft gold glow — warm but not over the top */
-.hero-headline em {
-    font-style: italic;
-    color: var(--color-text);
-    font-weight: 300;
+.hero-headline span {
     text-shadow: 0 2px 22px rgba(196, 154, 66, 0.55);
 }
 
