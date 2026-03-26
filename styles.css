@@ -546,7 +546,7 @@ textarea {
    WORK / PORTFOLIO
    ============================================================ */
 .work-section {
-    background-color: var(--color-bg-alt);
+    background-color: var(--color-bg);
     border-top: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
 }
@@ -693,6 +693,12 @@ textarea {
 /* ============================================================
    SERVICES
    ============================================================ */
+.services-section {
+    background-color: var(--color-bg-alt);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -739,7 +745,7 @@ textarea {
    ABOUT
    ============================================================ */
 .about-section {
-    background-color: var(--color-bg-alt);
+    background-color: var(--color-bg);
     border-top: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
 }
@@ -781,6 +787,12 @@ textarea {
 /* ============================================================
    CONTACT FORM
    ============================================================ */
+.contact-section {
+    background-color: var(--color-bg-alt);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
 .contact-form {
     max-width: 680px;
 }
