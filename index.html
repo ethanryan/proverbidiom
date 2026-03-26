@@ -15,6 +15,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Emoji favicon — EDIT: swap the emoji to change the icon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🙂</text></svg>">
 </head>
 <body>
 
@@ -387,10 +390,18 @@
                         Message sent. We'll be in touch soon.
                     </div>
                     <div class="form-message error" id="form-error" aria-live="polite">
-                        Something went wrong. Please try again or email us directly.
+                        Something went wrong. You can also reach us at
+                        <a href="mailto:proverbidiom@gmail.com">proverbidiom@gmail.com</a>
                     </div>
 
                 </form>
+
+                <!-- EDIT: Fallback email address -->
+                <p class="contact-fallback">
+                    Prefer email?
+                    <a href="mailto:proverbidiom@gmail.com">proverbidiom@gmail.com</a>
+                </p>
+
             </div>
         </section>
 
@@ -404,9 +415,9 @@
         <div class="container footer-inner">
 
             <div class="footer-left">
-                <!-- EDIT: Business name and domain in footer -->
+                <!-- EDIT: Business name, domain, email -->
                 <span class="footer-logo">Proverbidiom Labs</span>
-                <span class="footer-domain">proverbidiom.com</span>
+                <a href="mailto:proverbidiom@gmail.com" class="footer-email">proverbidiom@gmail.com</a>
             </div>
 
             <nav class="footer-nav" aria-label="Footer navigation">

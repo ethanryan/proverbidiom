@@ -583,12 +583,7 @@ textarea {
     align-items: flex-start;
     justify-content: space-between;
     padding: var(--space-6) 0;
-    transition: color var(--transition);
     gap: var(--space-4);
-}
-
-.work-link:hover {
-    color: var(--color-accent);
 }
 
 /* Container for name + desc + tags */
@@ -597,6 +592,7 @@ textarea {
     min-width: 0;
 }
 
+/* Classic retro hyperlink blue — intentional old-school touch */
 .work-name {
     display: block;
     font-family: var(--font-display);
@@ -605,6 +601,15 @@ textarea {
     letter-spacing: -0.01em;
     line-height: 1.2;
     margin-bottom: var(--space-2);
+    color: #0000EE;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+}
+
+.work-link:hover .work-name {
+    color: #0000EE;
+    text-decoration-thickness: 2px;
 }
 
 /* EDIT: Short project description */
@@ -887,13 +892,39 @@ textarea {
     display: block;
 }
 
+.form-message a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+/* Fallback email shown below the form */
+.contact-fallback {
+    margin-top: var(--space-8);
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+}
+
+.contact-fallback a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color var(--transition);
+}
+
+.contact-fallback a:hover {
+    color: var(--color-accent-hover);
+}
+
 
 /* ============================================================
    FOOTER
+   EDIT: Background color — #120F1A is deep purple-black.
+         Swap for any dark color, e.g. #0D0D0D for neutral black.
    ============================================================ */
 .site-footer {
-    border-top: 1px solid var(--color-border);
-    padding: var(--space-10) 0;
+    background-color: #120F1A;
+    padding: var(--space-12) 0;
 }
 
 .footer-inner {
@@ -906,19 +937,25 @@ textarea {
 .footer-left {
     display: flex;
     flex-direction: column;
-    gap: var(--space-1);
+    gap: var(--space-2);
 }
 
 .footer-logo {
     font-family: var(--font-display);
-    font-size: 1rem;
+    font-size: 1.125rem;
     font-weight: 500;
     letter-spacing: -0.01em;
+    color: rgba(255, 255, 255, 0.95);
 }
 
-.footer-domain {
+.footer-email {
     font-size: 0.8125rem;
-    color: var(--color-text-muted);
+    color: rgba(255, 255, 255, 0.45);
+    transition: color var(--transition);
+}
+
+.footer-email:hover {
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .footer-nav {
@@ -929,17 +966,17 @@ textarea {
 
 .footer-nav a {
     font-size: 0.8125rem;
-    color: var(--color-text-muted);
+    color: rgba(255, 255, 255, 0.40);
     transition: color var(--transition);
 }
 
 .footer-nav a:hover {
-    color: var(--color-text);
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .footer-copy {
     font-size: 0.8125rem;
-    color: var(--color-text-muted);
+    color: rgba(255, 255, 255, 0.25);
     width: 100%;
     margin-top: var(--space-2);
 }
