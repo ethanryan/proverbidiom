@@ -83,7 +83,40 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 
 /* ------------------------------------------------------------
-   4. FOOTER — AUTO YEAR
+   4. ACTIVE NAV HIGHLIGHTING
+   Updates aria-current and .active class on nav links as the
+   user scrolls between sections. Uses IntersectionObserver.
+   ------------------------------------------------------------ */
+const navLinks = document.querySelectorAll('.nav-desktop a[href^="#"]');
+
+function setActiveNav(id) {
+    navLinks.forEach(link => {
+        const isActive = link.getAttribute('href') === '#' + id;
+        link.classList.toggle('active', isActive);
+        link.setAttribute('aria-current', isActive ? 'true' : 'false');
+    });
+}
+
+const sections = document.querySelectorAll('main section[id]');
+
+if (sections.length > 0) {
+    const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                setActiveNav(entry.target.id);
+            }
+        });
+    }, {
+        rootMargin: '-40% 0px -55% 0px', // trigger when section crosses middle of viewport
+        threshold: 0
+    });
+
+    sections.forEach(section => navObserver.observe(section));
+}
+
+
+/* ------------------------------------------------------------
+   5. FOOTER — AUTO YEAR
    Automatically populates the copyright year.
    ------------------------------------------------------------ */
 const yearEl = document.getElementById('footer-year');
@@ -91,7 +124,7 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 
 /* ------------------------------------------------------------
-   5. SCROLL-TRIGGERED FADE-IN ANIMATIONS
+   6. SCROLL-TRIGGERED FADE-IN ANIMATIONS
    Uses IntersectionObserver to reveal .fade-in elements as
    they enter the viewport. Gracefully falls back if the API
    isn't available (all elements shown immediately).
@@ -119,7 +152,7 @@ if ('IntersectionObserver' in window && fadeEls.length > 0) {
 
 
 /* ------------------------------------------------------------
-   6. HERO VIDEO BACKGROUND
+   7. HERO VIDEO BACKGROUND
    Respects prefers-reduced-motion — pauses the video if the
    user has that accessibility setting enabled.
    EDIT: Adjust opacity in styles.css (.hero-video-bg)
@@ -132,7 +165,7 @@ if (heroVideo && window.matchMedia('(prefers-reduced-motion: reduce)').matches) 
 
 
 /* ------------------------------------------------------------
-   7. CONTACT FORM — VALIDATION & SUBMISSION
+   8. CONTACT FORM — VALIDATION & SUBMISSION
    ------------------------------------------------------------ */
 
 /* -- Validation helpers -- */
