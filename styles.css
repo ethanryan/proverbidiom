@@ -17,19 +17,19 @@
    ============================================================ */
 :root {
     /* EDIT: Brand colors */
-    --color-bg:           #F7F5F0;   /* warm off-white — main background */
-    --color-bg-alt:       #EDEAE3;   /* slightly darker — alternate sections */
-    --color-text:         #1A1C1A;   /* primary text */
-    --color-text-muted:   #6B6860;   /* secondary / muted text */
-    --color-accent:       #2E5D4B;   /* forest green — primary accent color */
-    --color-accent-hover: #245042;   /* darker green for hover states */
-    --color-gold:         #B8956A;   /* warm gold — service numbers, etc. */
-    --color-border:       #DDD9D0;   /* subtle divider lines */
+    --color-bg:           #F8F7FA;   /* faint lavender-white — main background */
+    --color-bg-alt:       #F0EDF6;   /* slightly deeper — alternate sections */
+    --color-text:         #1A1820;   /* near-black with a touch of purple */
+    --color-text-muted:   #6B6578;   /* purple-tinted muted text */
+    --color-accent:       #5B3E9A;   /* deep purple — primary accent */
+    --color-accent-hover: #4A3282;   /* darker purple for hover states */
+    --color-gold:         #C49A42;   /* warm gold — service numbers, CTAs */
+    --color-border:       #DDD8E8;   /* purple-tinted border */
     --color-white:        #FFFFFF;
     --color-error:        #C0392B;   /* form validation error */
-    --color-success-bg:   #EAF4EE;
-    --color-success-text: #1E5C31;
-    --color-success-border: #A8D5B5;
+    --color-success-bg:   #F0EBF8;
+    --color-success-text: #3B1F6E;
+    --color-success-border: #C4A8E8;
     --color-error-bg:     #FDEEEE;
     --color-error-text:   #8B1A1A;
     --color-error-border: #F0B8B8;
@@ -246,7 +246,7 @@ textarea {
 /* Added by script.js when the page is scrolled */
 .site-header.scrolled {
     border-bottom-color: var(--color-border);
-    background-color: rgba(247, 245, 240, 0.95);
+    background-color: rgba(248, 247, 250, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
@@ -390,24 +390,27 @@ textarea {
 .hero {
     position: relative;
     overflow: hidden;
-    padding-top: calc(var(--header-height) + var(--space-16));
-    padding-bottom: var(--space-16);
-    min-height: 62vh;
+    padding-top: calc(var(--header-height) + var(--space-8));
+    padding-bottom: var(--space-8);
     display: flex;
     align-items: center;
 }
 
-/* Canvas animation — fills the hero behind all content */
-#hero-canvas {
+/* GIF background — activated when you add your gif.
+   Uncomment the <div class="hero-gif-bg"> in index.html
+   and tell me the filename — I'll complete this. */
+.hero-gif-bg {
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.18;
     pointer-events: none;
     z-index: 0;
 }
 
-/* Push all direct hero children above the canvas */
+/* Keep hero text above gif background */
 .hero .container {
     position: relative;
     z-index: 1;
@@ -953,9 +956,8 @@ textarea {
 
     /* Hero adjustments */
     .hero {
-        padding-top: calc(var(--header-height) + var(--space-10));
-        padding-bottom: var(--space-12);
-        min-height: 70vh;
+        padding-top: calc(var(--header-height) + var(--space-8));
+        padding-bottom: var(--space-8);
     }
 
     .hero-actions {

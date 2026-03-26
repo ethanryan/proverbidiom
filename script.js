@@ -119,87 +119,15 @@ if ('IntersectionObserver' in window && fadeEls.length > 0) {
 
 
 /* ------------------------------------------------------------
-   6. HERO CANVAS ANIMATION
-   Organic floating gradient orbs — slow, smooth, arty.
-   Automatically pauses when the browser tab is hidden.
-   Skipped entirely if user prefers reduced motion.
-
-   EDIT: Adjust orb colors ([R, G, B]), count, speed, or opacity.
+   6. HERO GIF BACKGROUND — placeholder, ready to activate
+   When you have your gif:
+     1. Drop the file into this project folder
+     2. Uncomment <div class="hero-gif-bg"> in index.html
+     3. Replace 'your-animation.gif' below with your filename
+     4. Adjust the opacity value in styles.css (.hero-gif-bg)
    ------------------------------------------------------------ */
-(function () {
-    const canvas = document.getElementById('hero-canvas');
-    if (!canvas) return;
-
-    // Respect prefers-reduced-motion
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        canvas.style.display = 'none';
-        return;
-    }
-
-    const ctx = canvas.getContext('2d');
-    let raf;
-    let t = 0;
-
-    // EDIT: Each orb — base position (0–1), radius multiplier, RGB color, speed, start phase
-    const orbs = [
-        { bx: 0.12, by: 0.45, r: 0.58, color: [46,  93, 75],  speed: 0.00033, phase: 0.0 },
-        { bx: 0.82, by: 0.18, r: 0.46, color: [184,149,106], speed: 0.00026, phase: 2.1 },
-        { bx: 0.52, by: 0.82, r: 0.52, color: [46,  93, 75],  speed: 0.00041, phase: 4.3 },
-        { bx: 0.90, by: 0.65, r: 0.36, color: [139,110, 78],  speed: 0.00029, phase: 1.5 },
-        { bx: 0.22, by: 0.88, r: 0.30, color: [184,149,106], speed: 0.00052, phase: 3.2 },
-    ];
-
-    function resize() {
-        canvas.width  = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
-    }
-
-    function draw() {
-        t++;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        const w = canvas.width;
-        const h = canvas.height;
-
-        orbs.forEach(({ bx, by, r, color, speed, phase }) => {
-            // Sine/cosine gives natural, non-looping feel
-            const x = (bx + Math.sin(t * speed          + phase) * 0.18) * w;
-            const y = (by + Math.cos(t * speed * 0.71   + phase) * 0.14) * h;
-            const radius = r * Math.max(w, h);
-
-            const [red, green, blue] = color;
-            const g = ctx.createRadialGradient(x, y, 0, x, y, radius);
-            // EDIT: Change 0.20 to adjust orb brightness (0.10 = subtle, 0.30 = vivid)
-            g.addColorStop(0,    `rgba(${red},${green},${blue},0.20)`);
-            g.addColorStop(0.45, `rgba(${red},${green},${blue},0.07)`);
-            g.addColorStop(1,    `rgba(${red},${green},${blue},0)`);
-
-            ctx.fillStyle = g;
-            ctx.fillRect(0, 0, w, h);
-        });
-
-        raf = requestAnimationFrame(draw);
-    }
-
-    // Debounced resize handler
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(resize, 150);
-    }, { passive: true });
-
-    // Pause when tab is hidden — saves CPU/battery
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-            cancelAnimationFrame(raf);
-        } else {
-            draw();
-        }
-    });
-
-    resize();
-    draw();
-})();
+// const gifBg = document.querySelector('.hero-gif-bg');
+// if (gifBg) gifBg.style.backgroundImage = "url('your-animation.gif')";
 
 
 /* ------------------------------------------------------------
