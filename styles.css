@@ -78,7 +78,7 @@
 
 html {
     font-size: 19px; /* EDIT: Base font size — scales all rem units */
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth removed — JS smooth scroll handles this with header offset */
     -webkit-text-size-adjust: 100%;
 }
 
@@ -333,8 +333,13 @@ textarea {
     padding: 0 var(--space-1);
 }
 
-.nav-desktop a:hover {
+.nav-desktop a:hover,
+.nav-desktop a.active {
     color: var(--color-text);
+}
+
+.nav-desktop a.active {
+    font-weight: 500;
 }
 
 .nav-cta {
@@ -352,8 +357,8 @@ textarea {
     gap: 5px;
     padding: var(--space-2);
     margin-left: auto;
-    width: 36px;
-    height: 36px;
+    width: 44px;  /* WCAG 2.5.5 minimum touch target */
+    height: 44px; /* WCAG 2.5.5 minimum touch target */
 }
 
 .hamburger span {
@@ -437,6 +442,7 @@ textarea {
     overflow: hidden;
     padding-top: calc(var(--header-height) + var(--space-8));
     padding-bottom: var(--space-8);
+    min-height: 90vh;
     display: flex;
     align-items: center;
 }
@@ -456,16 +462,16 @@ textarea {
 }
 
 /* Gradient scrim between video and text — ensures readable contrast (ADA)
-   Fades from light on the left (where text lives) to transparent on the right */
+   Dark on the left (where text lives), fades to transparent on the right */
 .hero::after {
     content: '';
     position: absolute;
     inset: 0;
     background: linear-gradient(
         to right,
-        rgba(248, 247, 250, 0.75) 0%,
-        rgba(248, 247, 250, 0.45) 50%,
-        rgba(248, 247, 250, 0.10) 100%
+        rgba(18, 15, 26, 0.72) 0%,
+        rgba(18, 15, 26, 0.38) 50%,
+        rgba(18, 15, 26, 0.00) 100%
     );
     pointer-events: none;
     z-index: 1;
@@ -497,15 +503,11 @@ textarea {
     line-height: 1.08;
     letter-spacing: -0.025em;
     margin-bottom: var(--space-8);
-    color: var(--color-text);
+    color: var(--color-white);
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
 }
 
-/* EDIT: The italic accent portion of the headline
-   Dark text with a soft gold glow — warm but not over the top */
-.hero-headline em {
-    font-style: italic;
-    color: var(--color-text);
-    font-weight: 300;
+.hero-headline span {
     text-shadow: 0 2px 22px rgba(196, 154, 66, 0.55);
 }
 
@@ -544,7 +546,7 @@ textarea {
    WORK / PORTFOLIO
    ============================================================ */
 .work-section {
-    background-color: var(--color-bg-alt);
+    background-color: var(--color-bg);
     border-top: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
 }
@@ -672,6 +674,7 @@ textarea {
 .work-item.coming-soon .work-name {
     color: var(--color-text-muted);
     font-style: italic;
+    text-decoration: none; /* not a link — remove inherited underline */
 }
 
 .work-badge {
@@ -690,6 +693,12 @@ textarea {
 /* ============================================================
    SERVICES
    ============================================================ */
+.services-section {
+    background-color: var(--color-bg-alt);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -736,7 +745,7 @@ textarea {
    ABOUT
    ============================================================ */
 .about-section {
-    background-color: var(--color-bg-alt);
+    background-color: var(--color-bg);
     border-top: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
 }
@@ -778,6 +787,12 @@ textarea {
 /* ============================================================
    CONTACT FORM
    ============================================================ */
+.contact-section {
+    background-color: var(--color-bg-alt);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
 .contact-form {
     max-width: 680px;
 }
@@ -1072,6 +1087,7 @@ textarea {
     .hero {
         padding-top: calc(var(--header-height) + var(--space-8));
         padding-bottom: var(--space-8);
+        min-height: 85vh;
     }
 
     .hero-actions {

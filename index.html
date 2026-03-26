@@ -8,11 +8,26 @@
     <title>Proverbidiom Labs — Web Development</title>
     <meta name="description" content="Proverbidiom Labs builds polished, professional websites for small businesses, artists, writers, and service providers.">
 
+    <!-- Canonical URL — EDIT: update to your live domain -->
+    <link rel="canonical" href="https://proverbidiom.com/">
+
+    <!-- Open Graph — controls previews on Slack, iMessage, LinkedIn, etc. -->
+    <!-- EDIT: Update og:url and og:image with your live domain and a preview image -->
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://proverbidiom.com/">
+    <meta property="og:title"       content="Proverbidiom Labs — Web Development">
+    <meta property="og:description" content="Clean code for creative people. Polished, professional websites for small businesses, artists, writers, and service providers.">
+    <!-- <meta property="og:image" content="https://proverbidiom.com/og-image.png"> -->
+    <meta name="twitter:card"       content="summary_large_image">
+
     <!-- Google Fonts: Cormorant Garamond (display) + Jost (body) -->
     <!-- EDIT: To change fonts, update the URL here and the --font-display / --font-body variables in styles.css -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Preload hero video so it starts fetching before the parser reaches <body> -->
+    <link rel="preload" href="media/abstract-purple-landscape-gif.mp4" as="video" type="video/mp4">
 
     <link rel="stylesheet" href="styles.css">
 
@@ -74,7 +89,7 @@
              project folder and replace hero-bg.gif below, then
              uncomment the <div> and tell me — I'll wire up the CSS.
              ============================================================ -->
-        <section id="hero" class="hero">
+        <section id="hero" class="hero" aria-label="Introduction">
             <!-- Video background — muted/looping/autoplay required for gif-like behavior -->
             <video
                 class="hero-video-bg"
@@ -91,7 +106,7 @@
                     <!-- EDIT: Main headline -->
                     <h1 class="hero-headline">
                         Clean code<br>
-                        <em>for creative people.</em>
+                        <span>for creative people.</span>
                     </h1>
 
                     <div class="hero-actions">
